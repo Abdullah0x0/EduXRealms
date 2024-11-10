@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections; // Include this namespace for IEnumerator
 
 public class EnemyAI : MonoBehaviour
 {
@@ -47,7 +47,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         // Move the enemy forward in a straight line
-        rb.linearVelocity = transform.forward * runSpeed;
+        rb.velocity = transform.forward * runSpeed; // Corrected from linearVelocity to velocity
     }
 
     void OnCollisionEnter(Collision collision)

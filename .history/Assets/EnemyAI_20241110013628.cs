@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections; // Include this namespace for IEnumerator
 
 public class EnemyAI : MonoBehaviour
 {

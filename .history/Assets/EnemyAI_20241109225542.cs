@@ -1,23 +1,20 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections; // Include this namespace for IEnumerator
 
 public class EnemyAI : MonoBehaviour
 {
     public float runSpeed = 2.0f; // Speed at which the enemy runs away
     public GameObject hitEffectPrefab; // Prefab of the particle effect for when the enemy is hit
-    public AudioClip deathSound; // Audio clip for the death sound
     private Animator animator; // Reference to the Animator component
     private Rigidbody rb; // Reference to the Rigidbody component
     private Renderer renderer; // Reference to the Renderer component
-    private AudioSource audioSource; // Reference to the AudioSource component
 
     void Start()
     {
-        // Get the Animator, Rigidbody, Renderer, and AudioSource components attached to the enemy
+        // Get the Animator, Rigidbody, and Renderer components attached to the enemy
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
-        audioSource = GetComponent<AudioSource>();
 
         if (animator == null)
         {
@@ -31,10 +28,6 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.LogError("Renderer component is missing on " + gameObject.name);
         }
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource component is missing on " + gameObject.name);
-        }
 
         // Start the coroutine to rotate the enemy periodically
         StartCoroutine(RotatePeriodically());
@@ -47,7 +40,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         // Move the enemy forward in a straight line
-        rb.linearVelocity = transform.forward * runSpeed;
+        rb.velocity = transform.forward * runSpeed; // Corrected from linearVelocity to velocity
     }
 
     void OnCollisionEnter(Collision collision)
@@ -61,17 +54,8 @@ public class EnemyAI : MonoBehaviour
                 Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             }
 
-            // Increase the kill count using KillCountManager
-            KillCountManager.instance.IncreaseKillCount();
-
-            // Play the death sound
-            if (deathSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(deathSound);
-            }
-
-            // Destroy the enemy after the sound has finished playing
-            Destroy(gameObject, deathSound.length);
+            // Destroy the enemy
+            Destroy(gameObject);
 
             Debug.Log("Enemy hit by the cube and destroyed!");
         }
