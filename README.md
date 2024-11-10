@@ -47,7 +47,7 @@ Check out the demo of **Meow Mayhem** here: [Watch Demo](https://www.youtube.com
 4. Build and run the game on a supported device.
 
 ## Assets and Tools Used
-- **3D Model via Blender**: One-eyed cat monster model and golden cube model
+- **3D Model via Blender**: One-eyed cat monster model
 - **Unity Packages**: Meta XR All-In-One SDK
 - **Sound Effects**: pixabay.com
 - **Particle Effects**: Unity’s built-in Particle System
