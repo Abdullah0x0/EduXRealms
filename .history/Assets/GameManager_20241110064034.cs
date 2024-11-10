@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         KillCountManager.instance.killCount = 0;
-        killCountText.text = "Kills: 0";
         // Show the timer and kill count text, and set the game as active
         Debug.Log("Game is starting..."); // Debug message
         timerText.gameObject.SetActive(true);

@@ -11,20 +11,17 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI resultText; // Reference to the result UI Text
     public TextMeshProUGUI gameTitle;
     public TextMeshProUGUI killCountText;
-    public RawImage instructionsPic; // Corrected RawImage type
+    public rawimage instructionsPic;
     private float timer = 20f; // 20-second timer
     private bool isGameActive = false;
 
     void Start()
     {
-        // Hide the timer, result text, and kill count text at the beginning
+        // Hide the timer, result text, and restart button at the beginning
         timerText.gameObject.SetActive(false);
         countDownText.gameObject.SetActive(false);
         resultText.gameObject.SetActive(false);
         killCountText.gameObject.SetActive(false);
-
-        // Show the instructions picture
-        instructionsPic.gameObject.SetActive(true);
 
         // Start the countdown coroutine
         StartCoroutine(CountdownToStart());
@@ -46,15 +43,12 @@ public class GameManager : MonoBehaviour
 
         countDownText.gameObject.SetActive(false);
         gameTitle.gameObject.SetActive(false);
-        instructionsPic.gameObject.SetActive(false); // Hide the instructions picture
         StartGame();
     }
 
     public void StartGame()
     {
-        KillCountManager.instance.killCount = 0;
-        killCountText.text = "Kills: 0";
-        // Show the timer and kill count text, and set the game as active
+        // Show the timer and set the game as active
         Debug.Log("Game is starting..."); // Debug message
         timerText.gameObject.SetActive(true);
         killCountText.gameObject.SetActive(true);

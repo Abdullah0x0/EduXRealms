@@ -10,21 +10,17 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI countDownText; // Reference to the countdown UI Text
     public TextMeshProUGUI resultText; // Reference to the result UI Text
     public TextMeshProUGUI gameTitle;
-    public TextMeshProUGUI killCountText;
-    public RawImage instructionsPic; // Corrected RawImage type
+    public TextMeshProUGUI killCountText; // Reference to the Kill Count UI Text
     private float timer = 20f; // 20-second timer
     private bool isGameActive = false;
 
     void Start()
     {
-        // Hide the timer, result text, and kill count text at the beginning
+        // Hide the timer, result text, kill count text at the beginning
         timerText.gameObject.SetActive(false);
         countDownText.gameObject.SetActive(false);
         resultText.gameObject.SetActive(false);
-        killCountText.gameObject.SetActive(false);
-
-        // Show the instructions picture
-        instructionsPic.gameObject.SetActive(true);
+        killCountText.gameObject.SetActive(false); // Hide the Kill Count text initially
 
         // Start the countdown coroutine
         StartCoroutine(CountdownToStart());
@@ -46,18 +42,15 @@ public class GameManager : MonoBehaviour
 
         countDownText.gameObject.SetActive(false);
         gameTitle.gameObject.SetActive(false);
-        instructionsPic.gameObject.SetActive(false); // Hide the instructions picture
         StartGame();
     }
 
     public void StartGame()
     {
-        KillCountManager.instance.killCount = 0;
-        killCountText.text = "Kills: 0";
         // Show the timer and kill count text, and set the game as active
         Debug.Log("Game is starting..."); // Debug message
         timerText.gameObject.SetActive(true);
-        killCountText.gameObject.SetActive(true);
+        killCountText.gameObject.SetActive(true); // Show the Kill Count text
         isGameActive = true;
     }
 
@@ -82,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         timerText.gameObject.SetActive(false);
+        killCountText.gameObject.SetActive(false); // Hide the Kill Count text
         resultText.gameObject.SetActive(true);
 
         // Check win/loss condition using the kill count from KillCountManager
