@@ -7,7 +7,8 @@
 2. Watch as the spatial area is flooded with one-eyed cat monsters and a golden cube.
 3. Use the golden cube to strike or throw at the cat monsters.
 4. Track your **Kill Count** on the screen as you defeat each monster.
-5. Defeat all the cats before the timer runs out to win. Otherwise, it’s game over!
+5. Strike at least 10 cats within 20 seconds to win!
+6. Defeat all the cats before the timer runs out to win. Otherwise, it’s game over!
 
 ## Features
 - **MR Environment**: Immerse yourself in a mixed reality experience that places cat monsters in your surroundings.
